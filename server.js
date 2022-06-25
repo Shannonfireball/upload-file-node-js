@@ -16,7 +16,7 @@ app.get('/', function (req, res) {
 
 
 var upload = multer({ dest: "uploads/" });
-app.post("/api/fileanalyse", upload.single("upfile"), function(request, response, next) {
+app.post("/api/fileDetails", upload.single("upfile"), function(request, response, next) {
   var upfile = request.file;
   if (typeof upfile === "undefined"){
    response.json({ error: "file not uploaded" });
