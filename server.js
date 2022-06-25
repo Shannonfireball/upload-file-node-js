@@ -1,7 +1,9 @@
 var express = require('express');
 var cors = require('cors');
 const multer = require("multer");
+const { response } = require('express');
 require('dotenv').config()
+const path = require('path');
 
 var app = express();
 
@@ -22,9 +24,17 @@ app.post("/api/fileanalyse", upload.single("upfile"), function(request, response
   return response.json({
     name: upfile.originalname,
     type: upfile.mimetype,
-    size: upfile.size
+    size: upfile.size,
+    origin_file:upfile.filename
   });
+
 });
+
+app.use('/api/:file',(request,response)=>{
+    response.sendFile(path.join(__dirname,'uploads',''));
+    // not 100%, if supposed to send the file so tell me 
+
+})
 
 
 
