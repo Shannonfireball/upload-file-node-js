@@ -32,7 +32,7 @@ app.post("/api/fileanalyse", upload.single("upfile"), function(request, response
 
 app.use('/api/:file',(request,response)=>{
     response.sendFile(path.join(__dirname,'uploads',''));
-    // not 100%, if supposed to send the file so tell me 
+    // not 100%, if i'm supposed to send the file so tell me 
 
 })
 
